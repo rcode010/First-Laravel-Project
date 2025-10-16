@@ -5,15 +5,15 @@ use App\Models\Job;
 
 Route::get('/', function () {
     return view(view: "home");
-    
+
 });
 
 Route::get('/jobs', function () {
-    $jobs = Job::with('employer')->get();
+    $jobs = Job::with('employer')->cursorPaginate(3);
     return view('jobs',data: ['jobs'=>$jobs]);
 });
 Route::get('/jobs/{id}', function ($id) {
-    
+
     return view("job", ['job' => Job::find($id)]);
 });
 
