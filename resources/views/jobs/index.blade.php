@@ -6,7 +6,7 @@
     <div class="space-y-4">
         @foreach ($jobs as $job )
 
-        <a href="/jobs/{{ $job['id'] }}" class=" hover:underline block">
+        <a href="/jobs/{{ $job['id'] }}" class=" hover:underline block mb-2">
             <div class="text-blue">
                 {{ $job->employer->name }}
             </div>
