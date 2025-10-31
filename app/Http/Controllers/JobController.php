@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Job;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class JobController extends Controller
 {
@@ -14,7 +16,6 @@ class JobController extends Controller
     }
     public function create(){
         return view('jobs.create');
-
     }
     public function show(Job $job) {
         return view("jobs.show", data: ['job' => $job]);
@@ -34,6 +35,9 @@ class JobController extends Controller
     return redirect('/jobs');
     }
     public function edit(Job $job) {
+        
+        // Auth::user()->can('edit-job', $job); we can use it with if statement
+
         return view("jobs.edit", ['job' => $job]);
 
     }
@@ -45,7 +49,7 @@ class JobController extends Controller
         ]);
 
         // authorize (On hold...)
-        
+
         // Update
 
 
@@ -70,7 +74,7 @@ class JobController extends Controller
         $job->delete();
 
 
-        
+
         return redirect('/jobs');
     }
 }
