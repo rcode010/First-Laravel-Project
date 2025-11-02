@@ -17,7 +17,7 @@
                             Title
                         </x-form-label>
                         <div class="mt-2">
-                            <x-form-input id="title" name="salary" placeholder="CEO" required />
+                            <x-form-input id="title" name="title" placeholder="CEO" required />
 
 
                             <x-form-error name="title" />
